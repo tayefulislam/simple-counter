@@ -1,7 +1,9 @@
 import React from 'react';
+import Button from './Button';
+import Count from './Count';
 // import { useState } from 'react';
 
-const Counter = () => {
+const Counter = ({ id, count, increment, decrement }) => {
 
     // const [count, setCount] = useState(0);
     // console.log(count)
@@ -32,19 +34,21 @@ const Counter = () => {
                     <div
                         class="p-4 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow"
                     >
-                        <div class="text-2xl font-semibold">{count}</div>
+                        <Count count={count}></Count>
                         <div class="flex space-x-3">
-                            <button
+                            {/* <button
                                 class="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-                                onClick={increment} >
+                                onClick={() => increment(id)} >
                                 Increment
                             </button>
                             <button
-                                onClick={decrement}
+                                onClick={() => decrement(id)}
                                 class="bg-red-400 text-white px-3 py-2 rounded shadow"
                             >
                                 Decrement
-                            </button>
+                            </button> */}
+                            <Button handler={() => increment(id)}>Increment</Button>
+                            <Button handler={() => decrement(id)}>Decrement</Button>
                         </div>
                     </div>
                 </div>

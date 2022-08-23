@@ -18,9 +18,13 @@ function App() {
     return state.reduce((total, counter) => total + counter.count, 0)
   }
 
+  console.log(state)
+
   const increment = (id) => {
+    console.log("hi")
 
     const updateCounter = state.map(c => {
+
       if (c.id === id) {
         return {
           ...c,
@@ -30,7 +34,8 @@ function App() {
 
       return { ...c }
 
-    })
+    });
+    setState(updateCounter)
 
   }
 
@@ -42,19 +47,25 @@ function App() {
           ...c,
           count: c.count - 1,
         }
-      }
+      };
 
-      return { ...c }
+      return { ...c };
 
-    })
+    });
+    setState(updateCounter)
   }
 
 
   return (
     <div className="App">
-      <Counter></Counter>
-      <Counter></Counter>
-      <Counter></Counter>
+      {state.map(count => <Counter
+        count={count.count}
+        key={count?.id}
+        id={count?.id}
+        increment={increment}
+        decrement={decrement}
+      ></Counter>)}
+
       <Stats count={totalCount()}></Stats>
 
     </div>
